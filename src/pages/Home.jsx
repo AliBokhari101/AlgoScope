@@ -32,20 +32,20 @@ const Home = () => {
             <Navbar />
 
             {/* Hero Section */}
-            <section className="pt-32 pb-20 px-6">
+            <section className="pt-32 pb-20 px-4 md:px-6">
                 <div className="container mx-auto text-center">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                     >
-                        <h1 className="text-5xl md:text-7xl font-bold mb-6">
+                        <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold mb-6">
                             <span className="neon-text">Visualize Algorithms.</span>
                             <br />
                             <span className="text-white">Understand Deeply.</span>
                         </h1>
 
-                        <p className="text-xl md:text-2xl text-gray-300 mb-10 max-w-3xl mx-auto">
+                        <p className="text-lg md:text-xl lg:text-2xl text-gray-300 mb-10 max-w-3xl mx-auto">
                             Master Data Structures and Algorithms through interactive visualizations
                             and step-by-step animations
                         </p>
@@ -55,15 +55,15 @@ const Home = () => {
                         </Link>
                     </motion.div>
 
-                    {/* Animated Background Elements */}
-                    <div className="absolute top-20 left-10 w-72 h-72 bg-primary/20 rounded-full blur-3xl animate-float"></div>
-                    <div className="absolute top-40 right-10 w-96 h-96 bg-secondary/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
-                    <div className="absolute bottom-20 left-1/2 w-80 h-80 bg-accent/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '4s' }}></div>
+                    {/* Animated Background Elements - Hidden on mobile for performance */}
+                    <div className="hidden md:block absolute top-20 left-10 w-72 h-72 bg-primary/20 rounded-full blur-3xl animate-float"></div>
+                    <div className="hidden md:block absolute top-40 right-10 w-96 h-96 bg-secondary/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
+                    <div className="hidden md:block absolute bottom-20 left-1/2 w-80 h-80 bg-accent/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '4s' }}></div>
                 </div>
             </section>
 
             {/* Features Section */}
-            <section className="py-20 px-6">
+            <section className="py-20 px-4 md:px-6">
                 <div className="container mx-auto">
                     <motion.h2
                         initial={{ opacity: 0 }}
@@ -74,7 +74,7 @@ const Home = () => {
                         What You Can Learn
                     </motion.h2>
 
-                    <div className="grid md:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {features.map((feature, index) => (
                             <motion.div
                                 key={index}
@@ -103,7 +103,7 @@ const Home = () => {
             </section>
 
             {/* CTA Section */}
-            <section className="py-20 px-6">
+            <section className="py-20 px-4 md:px-6">
                 <div className="container mx-auto">
                     <motion.div
                         initial={{ opacity: 0, scale: 0.9 }}
@@ -111,8 +111,8 @@ const Home = () => {
                         viewport={{ once: true }}
                         className="glass-card text-center p-12"
                     >
-                        <h2 className="text-4xl font-bold mb-6">Ready to Start Learning?</h2>
-                        <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                        <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Start Learning?</h2>
+                        <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
                             Join thousands of developers mastering algorithms through visualization
                         </p>
                         <Link to="/dashboard" className="btn-secondary text-lg inline-block">

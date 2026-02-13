@@ -14,7 +14,7 @@ const About = () => {
         <div className="min-h-screen">
             <Navbar />
 
-            <div className="pt-24 px-6 pb-12">
+            <div className="pt-24 px-4 md:px-6 pb-12">
                 <div className="max-w-4xl mx-auto">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -22,14 +22,14 @@ const About = () => {
                         className="space-y-8"
                     >
                         <div className="text-center mb-12">
-                            <h1 className="text-5xl font-bold mb-4 neon-text">About AlgoScope</h1>
-                            <p className="text-xl text-gray-300">
+                            <h1 className="text-3xl md:text-5xl font-bold mb-4 neon-text">About AlgoScope</h1>
+                            <p className="text-lg md:text-xl text-gray-300">
                                 Interactive DSA Learning Platform
                             </p>
                         </div>
 
                         <div className="glass-card">
-                            <h2 className="text-2xl font-bold mb-4 text-primary">Project Overview</h2>
+                            <h2 className="text-xl md:text-2xl font-bold mb-4 text-primary">Project Overview</h2>
                             <p className="text-gray-300 leading-relaxed">
                                 AlgoScope is a modern, interactive platform designed to help developers and students
                                 master Data Structures and Algorithms through visual learning. The platform provides
@@ -39,8 +39,8 @@ const About = () => {
                         </div>
 
                         <div className="glass-card">
-                            <h2 className="text-2xl font-bold mb-6 text-secondary">Tech Stack</h2>
-                            <div className="grid md:grid-cols-2 gap-4">
+                            <h2 className="text-xl md:text-2xl font-bold mb-6 text-secondary">Tech Stack</h2>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 {techStack.map((tech, index) => (
                                     <motion.div
                                         key={index}
@@ -57,7 +57,7 @@ const About = () => {
                         </div>
 
                         <div className="glass-card">
-                            <h2 className="text-2xl font-bold mb-4 text-accent">Features</h2>
+                            <h2 className="text-xl md:text-2xl font-bold mb-4 text-accent">Features</h2>
                             <ul className="space-y-3 text-gray-300">
                                 <li className="flex items-start">
                                     <span className="text-primary mr-3">✓</span>
@@ -91,7 +91,7 @@ const About = () => {
                         </div>
 
                         <div className="glass-card text-center">
-                            <h2 className="text-2xl font-bold mb-4">Developer</h2>
+                            <h2 className="text-xl md:text-2xl font-bold mb-4">Developer</h2>
                             <p className="text-gray-300 mb-6">
                                 Built with ❤️ for the developer community
                             </p>

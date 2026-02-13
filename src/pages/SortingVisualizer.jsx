@@ -14,6 +14,7 @@ const SortingVisualizer = () => {
     const [comparing, setComparing] = useState([]);
     const [isSorting, setIsSorting] = useState(false);
     const [selectedAlgorithm, setSelectedAlgorithm] = useState('bubble');
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const sortingRef = useRef(false);
 
     const algorithms = {
@@ -94,32 +95,32 @@ const SortingVisualizer = () => {
     return (
         <div className="min-h-screen">
             <Navbar />
-            <Sidebar />
+            <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
 
-            <div className="ml-64 pt-24 px-8 pb-12">
+            <div className="md:ml-64 pt-24 px-4 md:px-8 pb-12">
                 <div className="max-w-7xl mx-auto">
                     <motion.h1
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-4xl font-bold mb-8 neon-text"
+                        className="text-2xl md:text-4xl font-bold mb-8 neon-text"
                     >
                         Sorting Visualizer
                     </motion.h1>
 
-                    <div className="grid lg:grid-cols-3 gap-6">
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                         {/* Main Visualization Area */}
                         <div className="lg:col-span-2 space-y-6">
                             {/* Algorithm Selection */}
                             <ControlPanel title="Select Algorithm">
-                                <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                                     {Object.keys(algorithms).map((key) => (
                                         <button
                                             key={key}
                                             onClick={() => setSelectedAlgorithm(key)}
                                             disabled={isSorting}
                                             className={`p-3 rounded-lg font-semibold transition-all ${selectedAlgorithm === key
-                                                    ? 'bg-primary text-white shadow-lg shadow-primary/50'
-                                                    : 'bg-white/5 hover:bg-white/10'
+                                                ? 'bg-primary text-white shadow-lg shadow-primary/50'
+                                                : 'bg-white/5 hover:bg-white/10'
                                                 } ${isSorting ? 'opacity-50 cursor-not-allowed' : ''}`}
                                         >
                                             {algorithms[key].name}
@@ -129,7 +130,7 @@ const SortingVisualizer = () => {
                             </ControlPanel>
 
                             {/* Visualization */}
-                            <div className="glass-card h-96">
+                            <div className="glass-card h-64 md:h-96">
                                 <div className="h-full flex items-end justify-center gap-1 p-4">
                                     {array.map((value, idx) => (
                                         <VisualBar
@@ -175,7 +176,7 @@ const SortingVisualizer = () => {
                                         />
                                     </div>
 
-                                    <div className="flex gap-3">
+                                    <div className="flex flex-col sm:flex-row gap-3">
                                         <button
                                             onClick={generateArray}
                                             disabled={isSorting}

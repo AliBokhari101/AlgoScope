@@ -1,8 +1,11 @@
 import { motion } from 'framer-motion';
 import Navbar from '../components/Navbar';
 import Sidebar from '../components/Sidebar';
+import { useState } from 'react';
 
 const Dashboard = () => {
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
     const stats = [
         { label: 'Sorting Algorithms', value: '5+', icon: '📊' },
         { label: 'Searching Methods', value: '2+', icon: '🔍' },
@@ -13,9 +16,9 @@ const Dashboard = () => {
     return (
         <div className="min-h-screen">
             <Navbar />
-            <Sidebar />
+            <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
 
-            <div className="ml-64 pt-24 px-8">
+            <div className="md:ml-64 pt-24 px-4 md:px-8">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -23,16 +26,16 @@ const Dashboard = () => {
                 >
                     {/* Welcome Section */}
                     <div className="mb-12">
-                        <h1 className="text-5xl font-bold mb-4">
+                        <h1 className="text-3xl md:text-5xl font-bold mb-4">
                             Welcome to <span className="neon-text">AlgoScope</span>
                         </h1>
-                        <p className="text-xl text-gray-300">
+                        <p className="text-lg md:text-xl text-gray-300">
                             Your interactive platform for mastering Data Structures and Algorithms
                         </p>
                     </div>
 
                     {/* Stats Grid */}
-                    <div className="grid md:grid-cols-4 gap-6 mb-12">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-12">
                         {stats.map((stat, index) => (
                             <motion.div
                                 key={index}
@@ -56,7 +59,7 @@ const Dashboard = () => {
                         transition={{ delay: 0.4 }}
                         className="glass-card"
                     >
-                        <h2 className="text-2xl font-bold mb-6 neon-text">Quick Start Guide</h2>
+                        <h2 className="text-xl md:text-2xl font-bold mb-6 neon-text">Quick Start Guide</h2>
 
                         <div className="space-y-4">
                             <div className="flex items-start space-x-4">
@@ -64,8 +67,8 @@ const Dashboard = () => {
                                     1
                                 </div>
                                 <div>
-                                    <h3 className="font-semibold text-lg mb-1">Choose a Category</h3>
-                                    <p className="text-gray-300">Select from Sorting, Searching, or Data Structures in the sidebar</p>
+                                    <h3 className="font-semibold text-base md:text-lg mb-1">Choose a Category</h3>
+                                    <p className="text-sm md:text-base text-gray-300">Select from Sorting, Searching, or Data Structures in the sidebar</p>
                                 </div>
                             </div>
 
@@ -74,8 +77,8 @@ const Dashboard = () => {
                                     2
                                 </div>
                                 <div>
-                                    <h3 className="font-semibold text-lg mb-1">Pick an Algorithm</h3>
-                                    <p className="text-gray-300">Choose the specific algorithm you want to visualize</p>
+                                    <h3 className="font-semibold text-base md:text-lg mb-1">Pick an Algorithm</h3>
+                                    <p className="text-sm md:text-base text-gray-300">Choose the specific algorithm you want to visualize</p>
                                 </div>
                             </div>
 
@@ -84,8 +87,8 @@ const Dashboard = () => {
                                     3
                                 </div>
                                 <div>
-                                    <h3 className="font-semibold text-lg mb-1">Customize & Run</h3>
-                                    <p className="text-gray-300">Adjust speed and size, then watch the algorithm in action</p>
+                                    <h3 className="font-semibold text-base md:text-lg mb-1">Customize & Run</h3>
+                                    <p className="text-sm md:text-base text-gray-300">Adjust speed and size, then watch the algorithm in action</p>
                                 </div>
                             </div>
                         </div>

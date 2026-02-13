@@ -17,6 +17,9 @@ const DataStructures = () => {
     const [linkedList, setLinkedList] = useState([]);
     const [listInput, setListInput] = useState('');
 
+    // Sidebar State
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
     // Stack Operations
     const pushToStack = () => {
         if (stackInput.trim()) {
@@ -60,19 +63,19 @@ const DataStructures = () => {
     return (
         <div className="min-h-screen">
             <Navbar />
-            <Sidebar />
+            <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
 
-            <div className="ml-64 pt-24 px-8 pb-12">
+            <div className="md:ml-64 pt-24 px-4 md:px-8 pb-12">
                 <div className="max-w-7xl mx-auto">
                     <motion.h1
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-4xl font-bold mb-8 neon-text"
+                        className="text-2xl md:text-4xl font-bold mb-8 neon-text"
                     >
                         Data Structures Visualizer
                     </motion.h1>
 
-                    <div className="grid lg:grid-cols-3 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {/* Stack */}
                         <ControlPanel title="Stack (LIFO)">
                             <div className="space-y-4">
@@ -105,8 +108,8 @@ const DataStructures = () => {
                                                 animate={{ opacity: 1, y: 0 }}
                                                 exit={{ opacity: 0, x: 100 }}
                                                 className={`p-3 rounded-lg text-center font-semibold ${index === stack.length - 1
-                                                        ? 'bg-primary text-white'
-                                                        : 'bg-white/10'
+                                                    ? 'bg-primary text-white'
+                                                    : 'bg-white/10'
                                                     }`}
                                             >
                                                 {item}
@@ -153,8 +156,8 @@ const DataStructures = () => {
                                                 animate={{ opacity: 1, x: 0 }}
                                                 exit={{ opacity: 0, y: -100 }}
                                                 className={`p-3 rounded-lg text-center font-semibold ${index === 0
-                                                        ? 'bg-secondary text-white'
-                                                        : 'bg-white/10'
+                                                    ? 'bg-secondary text-white'
+                                                    : 'bg-white/10'
                                                     }`}
                                             >
                                                 {item}

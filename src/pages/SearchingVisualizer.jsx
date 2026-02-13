@@ -16,6 +16,7 @@ const SearchingVisualizer = () => {
     const [result, setResult] = useState(null);
     const [selectedAlgorithm, setSelectedAlgorithm] = useState('binary');
     const [speed, setSpeed] = useState(50);
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
     const algorithms = {
         linear: {
@@ -70,19 +71,19 @@ const SearchingVisualizer = () => {
     return (
         <div className="min-h-screen">
             <Navbar />
-            <Sidebar />
+            <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
 
-            <div className="ml-64 pt-24 px-8 pb-12">
+            <div className="md:ml-64 pt-24 px-4 md:px-8 pb-12">
                 <div className="max-w-7xl mx-auto">
                     <motion.h1
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-4xl font-bold mb-8 neon-text"
+                        className="text-2xl md:text-4xl font-bold mb-8 neon-text"
                     >
                         Searching Visualizer
                     </motion.h1>
 
-                    <div className="grid lg:grid-cols-3 gap-6">
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                         {/* Main Visualization Area */}
                         <div className="lg:col-span-2 space-y-6">
                             {/* Algorithm Selection */}
@@ -94,8 +95,8 @@ const SearchingVisualizer = () => {
                                             onClick={() => setSelectedAlgorithm(key)}
                                             disabled={isSearching}
                                             className={`p-3 rounded-lg font-semibold transition-all ${selectedAlgorithm === key
-                                                    ? 'bg-primary text-white shadow-lg shadow-primary/50'
-                                                    : 'bg-white/5 hover:bg-white/10'
+                                                ? 'bg-primary text-white shadow-lg shadow-primary/50'
+                                                : 'bg-white/5 hover:bg-white/10'
                                                 } ${isSearching ? 'opacity-50 cursor-not-allowed' : ''}`}
                                         >
                                             {algorithms[key].name}
@@ -105,8 +106,8 @@ const SearchingVisualizer = () => {
                             </ControlPanel>
 
                             {/* Visualization */}
-                            <div className="glass-card p-8">
-                                <div className="flex items-center justify-center gap-3 mb-8">
+                            <div className="glass-card p-4 md:p-8">
+                                <div className="flex flex-wrap items-center justify-center gap-2 md:gap-3 mb-8">
                                     {array.map((value, idx) => {
                                         let bgColor = 'bg-white/10';
 
@@ -124,7 +125,7 @@ const SearchingVisualizer = () => {
                                                 initial={{ scale: 0 }}
                                                 animate={{ scale: 1 }}
                                                 transition={{ delay: idx * 0.05 }}
-                                                className={`${bgColor} w-16 h-16 rounded-lg flex items-center justify-center font-bold text-lg transition-all duration-300`}
+                                                className={`${bgColor} w-12 h-12 md:w-16 md:h-16 rounded-lg flex items-center justify-center font-bold text-base md:text-lg transition-all duration-300`}
                                             >
                                                 {value}
                                             </motion.div>
@@ -140,12 +141,12 @@ const SearchingVisualizer = () => {
                                         className="text-center p-4 bg-white/5 rounded-lg"
                                     >
                                         {result >= 0 ? (
-                                            <p className="text-lg">
+                                            <p className="text-base md:text-lg">
                                                 ✅ Found <span className="text-accent font-bold">{target}</span> at index{' '}
                                                 <span className="text-primary font-bold">{result}</span>
                                             </p>
                                         ) : (
-                                            <p className="text-lg">
+                                            <p className="text-base md:text-lg">
                                                 ❌ <span className="text-secondary font-bold">{target}</span> not found in array
                                             </p>
                                         )}
@@ -184,7 +185,7 @@ const SearchingVisualizer = () => {
                                         />
                                     </div>
 
-                                    <div className="flex gap-3">
+                                    <div className="flex flex-col sm:flex-row gap-3">
                                         <button
                                             onClick={generateSortedArray}
                                             disabled={isSearching}
